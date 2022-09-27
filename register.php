@@ -2,9 +2,18 @@
 include "koneksi.php";
 if (isset($_POST['submit'])) {
   //md5 itu buat enkripsi passwordnya dimysl. ada beberapa caranya sebenernya ke misalnya password_hash, crypt(), dll
+  if (isset($_POST['username'])) {
+    $username = $_POST['username'];
+   
+    $query = mysqli_query($conn, "SELECT username FROM register WHERE username = '$username'"); 
+   
+    if($query->num_rows > 0) {
+     echo "<script>alert('Username sudah terdaftar');</script>";
+    }
+}
   $password = md5($_POST["password"]);
   mysqli_query($conn, "insert into register set username= '$_POST[username]',
-    email= '$_POST[email]', telp = '$_POST[telp]', password = '$password'");
+    email= '$_POST[email]', agama= '$_POST[agama]', telp = '$_POST[telp]', password = '$password'");
   echo "<script type='text/javascript'>alert('Register Berhasil');
         window.location='login.php';
       </script>";
@@ -36,12 +45,24 @@ if (isset($_POST['submit'])) {
         <form method="post">
           <div class="form-group mt-3">
             <label for="name">Username</label>
-            <input type="text" class="form-control" id="name" name="username" placeholder="Masukkan Username">
+            <input type="text" class="form-control" id="name" name="username" placeholder="Masukkan Username" required>
           </div>
           <div class="form-group mt-3">
             <label for="name">Email</label>
-            <input type="text" class="form-control" id="name" name="email" placeholder="Masukkan Alamat Email">
+            <input type="text" class="form-control" id="name" name="email" placeholder="Masukkan Alamat Email" required>
           </div>
+          <label for="name">agama</label>
+          <div class="form-group">
+                    <select class="form-control" name="agama" aria-label="Default select example">
+                            <option selected>agama</option>
+                            <option value="1">Islam</option>
+                            <option value="2">Kristen</option>
+                            <option value="3">Katholik</option>
+                            <option value="4">Hindu</option>
+                            <option value="">Budha</option>
+                            </select>
+                    </div>
+
           <div class="form-group mt-3">
           <label for="name">No Hp</label>
             <input type="text" class="form-control" id="name" name="telp" placeholder="Masukkan No Telpon" onkeypress="return hanyaAngka(event)" required>
@@ -54,6 +75,10 @@ if (isset($_POST['submit'])) {
 		            return true;
 		        }
             </script>
+          </div>
+          <div class="form-group mt-3">
+            <label for="name">tanggal lahir</label>
+            <input type="date" class="form-control" id="date" placeholder="Masukan tanggal lahir">
           </div>
           <div class="form-group mt-3">
             <label for="name">Password</label>
