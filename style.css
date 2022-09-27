@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+body,html {
+  background-image: url(blueteam.jpg) ;
+  background-size: cover;
+  background-color: rgba(255,255,255,.5);
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  height: 100%;
+  font-weight: 800;
+}
+
+.welcome {
+  color :#0037ff;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  height: 455px;
+  width: 400px;
+  padding: 35px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
+
+input[type="email"],
+input[type="password"] {
+  border-radius: 5px;
+  border: 2px solid rgb(207, 194, 123);
+}
+
+label{
+  color : white ;
+}
+
+h1{
+  color : white ;
+}
+
+.forgot{
+  padding-top: 10px;
+}
+
+.btn-login {
+  height: 35px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+.link {
+  color: #0037ff;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #3689ff;
+  text-decoration: none;
+}
